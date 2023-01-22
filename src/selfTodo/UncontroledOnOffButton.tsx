@@ -4,7 +4,7 @@ type ButtonType = {
   //on: boolean;
 };
 
-export const OnOffButton = (props: ButtonType) => {
+export const UncontroledOnOffButton = (props: ButtonType) => {
   const [on, setOn] = useState(false);
 
   const onStyle = {

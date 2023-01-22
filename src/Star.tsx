@@ -1,17 +1,16 @@
+import { RatingValue } from "./Rating";
+
 type StarPropsType = {
   selected: boolean;
+  onClick: (value: RatingValue) => void;
+  value: RatingValue;
 };
 const Star = (props: StarPropsType) => {
-  console.log("Star rendering");
-  if (props.selected === true) {
-    return (
-      <span>
-        <b>* </b>
-      </span>
-    );
-  } else {
-    return <span>* </span>;
-  }
+ return (
+  <span onClick={()=> props.onClick(props.value)}>
+    {props.selected ?   <b>STAR </b> : "star "}
+  </span>
+ )
 };
 
 export default Star;

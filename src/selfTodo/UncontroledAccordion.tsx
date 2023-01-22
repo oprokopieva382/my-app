@@ -6,36 +6,35 @@ type AccordionPropsType = {
 };
 type AccordionTitlePropsType = {
   title: string;
+  liChange: () => void;
 };
 
 export const UncontroledAccordion = (props: AccordionPropsType) => {
   console.log("Accordion rendering");
   const [collapsed, setCollapsed] = useState(true);
 
-  const collapser = (value: boolean) => {
-    collapsed ? setCollapsed(false) : setCollapsed(true);
+  let liChange = () => {
+    setCollapsed(!collapsed);
   };
 
   return (
     <div>
-      <AccordionTitle title={props.titleValue} />
-      <button
-        onClick={() => {
-          collapser(collapsed);
-        }}
-      >
-        TOGGLE
-      </button>
+      <AccordionTitle title={props.titleValue} liChange={liChange} />
       {!collapsed && <AccordionBody />}
     </div>
   );
 };
 
 function AccordionTitle(props: AccordionTitlePropsType) {
-  console.log("AccordionTitle rendering");
-  return (
+   return (
     <div>
-      <h3>{props.title}</h3>
+      <h3
+        onClick={() => {
+          props.liChange();
+        }}
+      >
+        {props.title}
+      </h3>
     </div>
   );
 }

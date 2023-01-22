@@ -2,31 +2,37 @@ import { Accordion } from "./Accordion";
 import { OnOff } from "./OnOff";
 import { UncontroledRating } from "./selfTodo/UncontroledRating";
 // import Rating from "./Rating";
-import { OnOffButton } from "./selfTodo/OnOffButton";
+import { UncontroledOnOffButton } from "./selfTodo/UncontroledOnOffButton";
 import { UncontroledAccordion } from "./selfTodo/UncontroledAccordion";
+import { Rating, RatingValue } from "./Rating";
+import { useState } from "react";
+import { OnOffButton } from "./OnOffButton";
 
 function App() {
-  console.log("App rendering");
+  
+  let [ratingValue, setRatingValue] = useState<RatingValue>(1);
+  let [accordionColdapsed, setAccordionColdapsed] = useState(false);
+  const [on, setOn] = useState(false);
+
   return (
     <div>
-      <OnOffButton />
-      <OnOffButton />
+      <UncontroledOnOffButton />
 
       <UncontroledAccordion titleValue={"Menu"} />
-      <UncontroledAccordion titleValue={"Users"} />
 
       <UncontroledRating />
-      {/* <Accordion titleValue={"Menu"} collapsed={true} />
-      <Accordion titleValue={"Users"} collapsed={false} /> */}
+      <Accordion
+        titleValue={"Menu"}
+        setAccordionColdapsed={setAccordionColdapsed}
+        accordionColdapsed={accordionColdapsed}
+      />
+      {/* <Accordion titleValue={"Users"} collapsed={false} /> */}
 
-      {/* <Rating value={1} />
-      <Rating value={2} />
-      <Rating value={3} />
-      <Rating value={4} />
-      <Rating value={5} /> */}
+      <Rating value={ratingValue} onClick={setRatingValue} />
 
       {/* <OnOff push={true} />
       <OnOff push={false} /> */}
+      <OnOffButton on={on} setOn={setOn} />
     </div>
   );
 }

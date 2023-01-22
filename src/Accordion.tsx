@@ -1,26 +1,35 @@
 type AccordionPropsType = {
-  titleValue: string;
-  collapsed: boolean;
-};
-type AccordionTitlePropsType = {
-  title: string;
+  titleValue: string
+  accordionColdapsed: boolean
+  setAccordionColdapsed: (accordionColdapsed: boolean) => void
 };
 
+
 export const Accordion = (props: AccordionPropsType) => {
-  console.log("Accordion rendering");
+
+  const onClickcallback = ()=> {
+    props.setAccordionColdapsed(props.accordionColdapsed);
+  }
+
   return (
     <div>
-      <AccordionTitle title={props.titleValue} />
-      {!props.collapsed && <AccordionBody />}
+      <AccordionTitle
+        title={props.titleValue}
+        onClickcallback={onClickcallback}
+      />
+      {!props.accordionColdapsed && <AccordionBody />}
     </div>
   );
 };
 
+type AccordionTitlePropsType = {
+  title: string;
+  onClickcallback: () => void;
+};
 function AccordionTitle(props: AccordionTitlePropsType) {
-  console.log("AccordionTitle rendering");
-  return (
+   return (
     <div>
-      <h3>{props.title}</h3>
+      <h3 onClick={()=> {props.onClickcallback()}}>{props.title}</h3>
     </div>
   );
 }
