@@ -11,28 +11,26 @@ import { OnOffButton } from "./OnOffButton";
 function App() {
   
   let [ratingValue, setRatingValue] = useState<RatingValue>(1);
-  let [accordionColdapsed, setAccordionColdapsed] = useState(false);
-  const [on, setOn] = useState(false);
+  let [accordionCollapsed, setAccordionColdapsed] = useState(false);
+  const [switchOn, setSwitchOn] = useState(false);
+
+
 
   return (
     <div>
-      <UncontroledOnOffButton />
-
-      <UncontroledAccordion titleValue={"Menu"} />
-
-      <UncontroledRating />
+      <UncontroledOnOffButton onChange={setSwitchOn}/> {switchOn.toString()}
+      {/* <UncontroledAccordion titleValue={"Menu"} /> */}
+      {/* <UncontroledRating /> */}
       <Accordion
         titleValue={"Menu"}
-        setAccordionColdapsed={setAccordionColdapsed}
-        accordionColdapsed={accordionColdapsed}
+        onClick={() => setAccordionColdapsed(!accordionCollapsed)}
+        collapsed={accordionCollapsed}
       />
       {/* <Accordion titleValue={"Users"} collapsed={false} /> */}
-
       <Rating value={ratingValue} onClick={setRatingValue} />
-
       {/* <OnOff push={true} />
       <OnOff push={false} /> */}
-      <OnOffButton on={on} setOn={setOn} />
+      {/* <OnOffButton on={switchOn} onChange={setSwitchOn} /> */}
     </div>
   );
 }

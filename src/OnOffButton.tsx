@@ -1,8 +1,6 @@
-import { useState } from "react";
-
 type ButtonType = {
   on: boolean;
-  setOn: (on: boolean)=> void
+  onChange: (on: boolean) => void;
 };
 
 export const OnOffButton = (props: ButtonType) => {
@@ -36,10 +34,10 @@ export const OnOffButton = (props: ButtonType) => {
 
   return (
     <div>
-      <div style={onStyle} onClick={() => props.setOn(true)}>
+      <div style={onStyle} onClick={() => {props.onChange(true)}}>
         On
       </div>
-      <div style={offStyle} onClick={() => props.setOn(false)}>
+      <div style={offStyle} onClick={() => {props.onChange(false)}}>
         Off
       </div>
       <div style={indicatorStyle}></div>

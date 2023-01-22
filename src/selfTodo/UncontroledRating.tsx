@@ -21,28 +21,28 @@ export const UncontroledRating = (props: RatingPropsType) => {
       <Star
         selected={value > 1}
         setValue={() => {
-          setValue(1);
+          setValue(2);
         }}
       />
 
       <Star
         selected={value > 2}
         setValue={() => {
-          setValue(1);
+          setValue(3);
         }}
       />
 
       <Star
         selected={value > 3}
         setValue={() => {
-          setValue(1);
+          setValue(4);
         }}
       />
 
       <Star
         selected={value > 4}
         setValue={() => {
-          setValue(1);
+          setValue(5);
         }}
       />
     </div>
