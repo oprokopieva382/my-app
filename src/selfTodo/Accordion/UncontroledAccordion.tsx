@@ -2,15 +2,9 @@ import { useState } from "react";
 
 type AccordionPropsType = {
   titleValue: string;
-  //collapsed: boolean;
-};
-type AccordionTitlePropsType = {
-  title: string;
-  liChange: () => void;
 };
 
 export const UncontroledAccordion = (props: AccordionPropsType) => {
-  console.log("Accordion rendering");
   const [collapsed, setCollapsed] = useState(true);
 
   let liChange = () => {
@@ -25,8 +19,12 @@ export const UncontroledAccordion = (props: AccordionPropsType) => {
   );
 };
 
+type AccordionTitlePropsType = {
+  title: string;
+  liChange: () => void;
+};
 function AccordionTitle(props: AccordionTitlePropsType) {
-   return (
+  return (
     <div>
       <h3
         onClick={() => {
@@ -40,7 +38,6 @@ function AccordionTitle(props: AccordionTitlePropsType) {
 }
 
 function AccordionBody() {
-  console.log("AccordionBody rendering");
   return (
     <div>
       <ul>

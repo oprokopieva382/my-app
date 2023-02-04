@@ -1,12 +1,12 @@
-import { Accordion } from "./Accordion";
+import { Accordion } from "./selfTodo/Accordion/Accordion";
 import { OnOff } from "./OnOff";
-import { UncontroledRating } from "./selfTodo/UncontroledRating";
+import { UncontroledRating } from "./selfTodo/Rating/UncontroledRating";
 // import Rating from "./Rating";
-import { UncontroledOnOffButton } from "./selfTodo/UncontroledOnOffButton";
-import { UncontroledAccordion } from "./selfTodo/UncontroledAccordion";
-import { Rating, RatingValue } from "./Rating";
+import { UncontroledOnOffButton } from "./selfTodo/OnOff/UncontroledOnOffButton";
+import { UncontroledAccordion } from "./selfTodo/Accordion/UncontroledAccordion";
+import { Rating, RatingValue } from "./selfTodo/Rating/Rating";
 import { useState } from "react";
-import { OnOffButton } from "./OnOffButton";
+import { OnOffButton } from "./selfTodo/OnOff/OnOffButton";
 
 function App() {
   
