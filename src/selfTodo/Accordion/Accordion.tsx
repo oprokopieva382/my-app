@@ -1,41 +1,64 @@
+import React from "react";
+
+type ItemType = {
+  title: string;
+  value: any;
+};
+
 type AccordionPropsType = {
   titleValue: string;
   collapsed: boolean;
+  items: ItemType[];
   onClick: () => void;
+  onChange: () => void;
 };
 
-
 export const Accordion = (props: AccordionPropsType) => {
-
-  
   return (
     <div>
-      <AccordionTitle title={props.titleValue} onClick={props.onClick} />
-      {!props.collapsed && <AccordionBody />}
+      <AccordionTitle title={props.titleValue} onChange={props.onChange} />
+      {!props.collapsed && (
+        <AccordionBody items={props.items} onClick={props.onClick} />
+      )}
     </div>
   );
 };
 
 type AccordionTitlePropsType = {
   title: string;
-  onClick: () => void;
+  onChange: () => void;
 };
-function AccordionTitle(props: AccordionTitlePropsType) {
-   return (
+function SecretAccordionTitle(props: AccordionTitlePropsType) {
+  return (
     <div>
-      <h3 onClick={props.onClick}>{props.title}</h3>
+      <h3 onClick={props.onChange}>{props.title}</h3>
     </div>
   );
 }
 
-function AccordionBody() {
+const AccordionTitle = React.memo(SecretAccordionTitle);
+
+type AccordionBodyPropsType = {
+  items: ItemType[];
+  onClick: (value: any) => void;
+};
+function SecretAccordionBody(props: AccordionBodyPropsType) {
   return (
     <div>
       <ul>
-        <li>1</li>
-        <li>2</li>
-        <li>3</li>
+        {props.items.map((i, index) => (
+          <li
+            onClick={() => {
+              props.onClick(i.value);
+            }}
+            key={index}
+          >
+            {i.title}
+          </li>
+        ))}
       </ul>
     </div>
   );
 }
+
+const AccordionBody = React.memo(SecretAccordionBody);

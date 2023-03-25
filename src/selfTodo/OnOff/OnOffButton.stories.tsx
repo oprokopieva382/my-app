@@ -7,7 +7,7 @@ export default {
   component: OnOffButton,
 };
 
-const callback = action("on or off cliked");
+const callback = action("on or off clicked");
 
 export const OnMode = () => <OnOffButton on={true} onChange={callback} />;
 export const OffMode = () => <OnOffButton on={false} onChange={callback} />;

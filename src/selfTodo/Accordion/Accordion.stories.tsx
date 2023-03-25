@@ -8,12 +8,30 @@ export default {
 };
 
 const callback = action("accordion mode change event fired");
+const onClickCallback = action("some item was clicked");
 
 export const MenuCollapsedMode = () => (
-  <Accordion titleValue={"Menu"} collapsed={true} onClick={callback} />
+  <Accordion
+    titleValue={"Menu"}
+    collapsed={true}
+    onChange={callback}
+    onClick={onClickCallback}
+    items={[]}
+  />
 );
 export const UserUncollapsedMode = () => (
-  <Accordion titleValue={"Users"} collapsed={false} onClick={callback} />
+  <Accordion
+    titleValue={"Users"}
+    collapsed={false}
+    onChange={callback}
+    onClick={onClickCallback}
+    items={[
+      { title: "Alex", value: 1 },
+      { title: "Bob", value: 2 },
+      { title: "Nick", value: 3 },
+      { title: "Jack", value: 4 },
+    ]}
+  />
 );
 
 export const ModeChanging = () => {
@@ -22,7 +40,14 @@ export const ModeChanging = () => {
     <Accordion
       titleValue={"Users"}
       collapsed={value}
-      onClick={() => setValue(!value)}
+      onChange={() => setValue(!value)}
+      onClick={onClickCallback}
+      items={[
+        { title: "Alex", value: 1 },
+        { title: "Bob", value: 2 },
+        { title: "Nick", value: 3 },
+        { title: "Jack", value: 4 },
+      ]}
     />
   );
 };

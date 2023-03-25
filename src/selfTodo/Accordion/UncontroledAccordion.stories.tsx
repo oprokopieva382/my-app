@@ -9,5 +9,5 @@ export default {
 const callback = action("Accordion mode change event fired");
 
 export const ModeChanging = () => {
-  return <UncontroledAccordion titleValue={"Menu"} />;
+  return <UncontroledAccordion titleValue={"Users"} />;
 };
